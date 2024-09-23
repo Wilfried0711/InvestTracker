@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Liste des investissements</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Liste des investissements</h1>
+        <a href="{% url 'investment-create' %}" class="btn btn-primary mb-3">Ajouter un investissement</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Type</th>
+                    <th>Quantité</th>
+                    <th>Valeur actuelle</th>
+                    <th>Portfolio</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for investment in investments %}
+                <tr>
+                    <td>{{ investment.id }}</td>
+                    <td>{{ investment.get_investment_type_display }}</td>
+                    <td>{{ investment.quantity }}</td>
+                    <td>{{ investment.current_value }}</td>
+                    <td>{{ investment.portfolio.name }}</td>
+                    <td>
+                        <a href="{% url 'investment-update' investment.id %}" class="btn btn-warning btn-sm">Modifier</a>
+                        <a href="{% url 'investment-delete' investment.id %}" class="btn btn-danger btn-sm">Supprimer</a>
+                        <a href="{% url 'investment-show' investment.id %}" class="btn btn-info btn-sm">Voir</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

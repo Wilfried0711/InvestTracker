@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Détails de l'investissement</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Détails de l'investissement</h1>
+        <p><strong>Type :</strong> {{ investment.get_investment_type_display }}</p>
+        <p><strong>Quantité :</strong> {{ investment.quantity }}</p>
+        <p><strong>Valeur actuelle :</strong> {{ investment.current_value }}</p>
+        <p><strong>Portfolio :</strong> {{ investment.portfolio.name }}</p>
+        <a href="{% url 'investment-list' %}" class="btn btn-secondary">Retour à la liste</a>
+    </div>
+</body>
+</html>
